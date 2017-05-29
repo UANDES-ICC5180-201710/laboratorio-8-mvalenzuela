@@ -1,0 +1,6 @@
+<tr>
+  <td><%= enrollment.student %></td>
+  <td><%= link_to 'Show', [@course, enrollment] %></td>
+  <td><%= link_to 'Edit', edit_course_enrollment_path(id: enrollment.id) %></td>
+  <td><%= link_to 'Destroy', [@course, enrollment], method: :delete, data: { confirm: 'Are you sure?' } %></td>
+</tr>

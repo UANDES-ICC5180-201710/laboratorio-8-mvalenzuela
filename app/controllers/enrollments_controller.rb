@@ -6,6 +6,13 @@ class EnrollmentsController < ApplicationController
   # GET /enrollments.json
   def index
     @enrollments = Enrollment.all
+    course_enrollments = Array.new([])
+    for enrollment in @enrollments
+      if enrollment.course.id == @course.id
+        course_enrollments.push(enrollment)
+      end
+    end
+    @enrollments = course_enrollments
   end
 
   # GET /enrollments/1
@@ -34,6 +41,7 @@ class EnrollmentsController < ApplicationController
           redirect_to action: 'students', controller: 'courses', :id => @course.id, notice: 'Enrollment was successfully created.'
         }
         format.json { render :show, status: :created, location: @enrollment }
+        format.js { render 'courses/show_update' }
       else
         format.html { render :new }
         format.json { render json: @enrollment.errors, status: :unprocessable_entity }

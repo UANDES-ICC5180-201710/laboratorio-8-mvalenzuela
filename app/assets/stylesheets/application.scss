@@ -14,4 +14,16 @@
 
 @import "bootstrap-sprockets";
 @import "bootstrap";
+@import 'bootstrap-datetimepicker';
 @import "*";
+
+// Custom colors:
+@black:   #200;
+@redDark: darken(@red, 5);
+@linkColor: @redDark;
+@titleColor: lighten(@red, 10);
+
+table thead th {
+  background-color: #006DCC;
+  color: white;
+}
